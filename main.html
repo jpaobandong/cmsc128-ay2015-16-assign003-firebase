@@ -15,6 +15,12 @@
             var name = $('#nameField').val();
             var org = $('#orgField').val();
             var contact = $('#contactField').val();
+            
+            myDataRef.push({name: name, org: org, contact: contact});
+            
+            $('#nameField').clear();
+            $('#orgField').clear();
+            $('#contactField').clear();
         });
     </script>
   </body>
