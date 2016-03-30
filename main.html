@@ -1,14 +1,22 @@
 <html>
   <head>
+    <title>Attendance Tracker</title>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
   </head>
   <body>
     <input type="text" id="nameField" placeholder="Name">
     <input type="text" id="orgField" placeholder="Organization">
-    <input type="text" id="contactField" placeholder="Contact">
-    
+    <input type="text" id="contactField" placeholder="Contact Number">
+    <button id="addAttendance">Add Attendance</button>
     <script>
         var myDataRef = new Firebase('https://attendance-tracker.firebaseIO.com/');
+        $('#addAttendance').click(function (e) {
+            var name = $('#nameField').val();
+            var org = $('#orgField').val();
+            var contact = $('#contactField').val();
+            
+        });
     </script>
   </body>
 </html>
