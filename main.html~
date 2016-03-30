@@ -16,7 +16,13 @@
             var org = $('#orgField').val();
             var contact = $('#contactField').val();
             
+            $('#nameField').val('');
+            $('#orgField').val('');
+            $('#contactField').val('');
+            
             myDataRef.push({name: name, org: org, contact: contact});
+            
+            
         });
     </script>
   </body>
