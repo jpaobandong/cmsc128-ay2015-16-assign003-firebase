@@ -3,8 +3,11 @@
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   </head>
   <body>
+    <input type="text" id="nameField" placeholder="Name">
+    <input type="text" id="orgField" placeholder="Organization">
+    <input type="text" id="contactField" placeholder="Contact">
     <script>
-        var myDataRef = new Firebase('https://jqpo19w10ev.firebaseio-demo.com/');
+        var myDataRef = new Firebase('https://attendance-tracker.firebaseIO.com/');
     </script>
   </body>
 </html>
