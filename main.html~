@@ -15,7 +15,7 @@
             var name = $('#nameField').val();
             var org = $('#orgField').val();
             var contact = $('#contactField').val();
-            console.log(name + org + contact);
+            
         });
     </script>
   </body>
