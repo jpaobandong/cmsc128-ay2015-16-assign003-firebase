@@ -5,25 +5,36 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
   </head>
   <body>
-    <input type="text" id="nameField" placeholder="Name">
-    <input type="text" id="orgField" placeholder="Organization">
-    <input type="text" id="contactField" placeholder="Contact Number">
-    <button id="addAttendance">Add Attendance</button>
+    <div id="inputs">
+        <input type="text" id="nameField" placeholder="Name"></input></br>
+        <textarea type="text" id="noteField" placeholder="Note"></textarea></br>
+        <button id="addNote">Add Attendance</button></br>
+        </br>
+    </div>
+    <div id="AttendanceList"></div>
     <script>
         var myDataRef = new Firebase('https://attendance-tracker.firebaseIO.com/');
         $('#addAttendance').click(function (e) {
             var name = $('#nameField').val();
-            var org = $('#orgField').val();
-            var contact = $('#contactField').val();
+            var note = $('#noteField').val();
             
-            $('#nameField').val('');
-            $('#orgField').val('');
-            $('#contactField').val('');
-            
-            myDataRef.push({name: name, org: org, contact: contact});
+            $('#noteField').val('');
             
             
-        });
+            myDataRef.push({name: name, note: note, isDone: false});
+            
+            });
+            
+            myDataRef.on('child_added', function(snapshot) {
+                var info = snapshot.val();
+                displayAttendance(info.name, info.note, info.isDone);
+            });
+            
+            function displayAttendance(name, org, contact) {
+                $('<div/>').text(name).prepend($('<em/>').text(org)).appendTo($('#AttendanceList'));
+                $('#AttendanceList')[0].scrollTop = $('#AttendanceList')[0].scrollHeight;
+            };
+            
     </script>
   </body>
 </html>
