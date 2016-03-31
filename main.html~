@@ -3,19 +3,32 @@
     <title>Attendance Tracker</title>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <style>
+        div.noteObject{
+            border-style: solid;
+            border-width: 1px;
+            width: 200px;
+            height: 200px;
+            float: left;    
+            margin: 10px;
+            padding: 5px;
+        }
+        
+    </style>
   </head>
   <body>
-  <div style="margin: 10px; width: 305; float: left" id="sidebar">
-    <div style="border-style: solid; border-width: 3px; height: 300; width: 302px; padding: 10px;" id="inputs">
+  <div style="" id="sidebar">
+    <div style="align: center; border-style: solid; border-width: 3px; height: 200; width: 302px; padding: 10px;" id="inputs">
         <p style="text-align:center;" id="addNoteLabel">Add Note</p>
         <input type="text" id="nameField" placeholder="Name"></input></br>
-        <textarea style="resize: none; height: 200px; width: 300px;" type="text" id="noteField" placeholder="Note"></textarea></br>
+        <textarea style="resize: none; height: 100; width: 279px;" type="text" id="noteField" placeholder="Note"></textarea></br>
         <button style="float: left;" id="addNote">Add</button></br>
         </br>
     </div>
     </div>
-    <div style="padding: 10px" id="NotesList">
-        <p style="text-align:center;" id="NotesLabel">Notes</p>
+    <div style="padding: 10px;" id="NotesList">
+        <p style="" id="NotesLabel">Notes</p>
+        
     </div>
     <script>
         var myDataRef = new Firebase('https://attendance-tracker.firebaseIO.com/');
@@ -36,9 +49,20 @@
             });
             
             function displayNote(name, note, isDone) {
-                $('<div/>').text(name).prepend($('<em/>').text(note)).appendTo($('#NotesList'));
-                $('#NotesList')[0].scrollTop = $('#NotesList')[0].scrollHeight;
+                var $doneButton;
+                if(!isDone){
+                    $doneButton = '<button id="UpdateTask" value="'+ note +'">Done!</button>';
+                }
+                else{
+                    $doneButton = '<p>Done!</p>';
+                }
+                $('<div class="noteObject">').text(name).append($('<p>').text(note)).append($doneButton).appendTo($('#NotesList'));
+               
             };
+            
+            $('#UpdateTask').click(function (e){
+                
+            });
             
     </script>
   </body>
